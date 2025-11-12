@@ -42,7 +42,7 @@ function Carousel() {
   return (
     <section
       ref={ref}
-      className="relative h-[130vh] bg-[#EFEFEF] overflow-hidden flex flex-col items-center justify-start pt-12 shadow"
+      className="relative h-[130vh] bg-[#EFEFEF] overflow-hidden flex flex-col items-center justify-start pt-12 shadow border-b-10 border-b-[#EFEFEF]"
     >
       {/* === BUTTONS SECTION === */}
       <motion.div

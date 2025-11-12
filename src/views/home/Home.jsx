@@ -10,7 +10,7 @@ function Home() {
       <Navbar />
       <Carousel />
       <PlatformInfo />
-      <Platform />
+      {/* <Platform /> */}
     </>
   );
 }

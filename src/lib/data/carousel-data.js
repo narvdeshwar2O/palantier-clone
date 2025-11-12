@@ -43,7 +43,13 @@ export const carouselData = [
     description:
       "How Foundry and AIP Help Companies Win: 70+ Speakers Including BP, Novartis, and American Airlines.",
   },
-  { id: 6, title: "Interoperability", src: INTEROPER },
+  {
+    id: 6,
+    title: "Interoperability",
+    src: INTEROPER,
+    description:
+      "Activate AI. With any storage. Any compute. Any model. Anywhere.",
+  },
   {
     id: 7,
     title: "Maven Smart System",
