@@ -1,5 +1,32 @@
 @import "tailwindcss";
+/* src/assets/styles/fonts.css */
 
-platform-info {
-  transition: "all 1s cubic-bezier(0.16, 1, 0.3, 1)";
+@font-face {
+  font-family: "AllianceNo1";
+  src: url("/fonts/AllianceNo1.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
+
+@font-face {
+  font-family: "AllianceNo2";
+  src: url("/fonts/AllianceNo2.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* optional: simple global transition for platform-info */
+platform-info {
+  transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* apply AllianceNo1 globally */
+body {
+  font-family: "AllianceNo1", "Helvetica Neue", Arial, sans-serif;
+  background-color: #efefef;
+  color: #000;
+}
+
+
