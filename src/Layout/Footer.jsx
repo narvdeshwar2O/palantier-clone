@@ -31,8 +31,8 @@ const FooterList = ({ title, items }) => (
             <motion.span
               initial={{ x: 0 }}
               whileHover={{ x: 5 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="hover:text-gray-400"
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="hover:text-gray-400 ml-2"
             >
               {item.title}
             </motion.span>
@@ -46,10 +46,13 @@ const FooterList = ({ title, items }) => (
 function Footer() {
   return (
     <div className="bg-gray-50">
-      <div className="flex w-[98%] py-16 mx-auto gap-10 text-gray-800">
-        {/* --- LEFT COLUMN --- */}
-        <div className="w-[25%]">
-          <div className="flex flex-col gap-6 divide-y divide-gray-300 w-[80%]">
+      <div className="w-[95%] mx-auto py-12 gap-10 text-gray-800
+                      flex flex-col lg:flex-row">
+
+        {/* LEFT COLUMN */}
+        <div className="lg:w-1/4 w-full">
+          <div className="flex flex-col gap-6 divide-y divide-gray-300 w-full">
+
             <div className="flex flex-col gap-5">
               <p className="text-sm text-gray-600 border-b border-gray-300 pb-5">
                 ©2025 Palantir Technologies Inc. <br /> All rights reserved.
@@ -72,7 +75,7 @@ function Footer() {
             </div>
 
             {/* Social Links */}
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 pb-5">
               {footerData.socialPlatform.map((item) => (
                 <a
                   key={item.id}
@@ -88,8 +91,10 @@ function Footer() {
           </div>
         </div>
 
-        {/* --- RIGHT COLUMN --- */}
-        <div className="w-[75%] grid grid-cols-4 gap-8">
+        {/* RIGHT COLUMN */}
+        <div className="lg:w-3/4 w-full grid 
+                        grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 
+                        gap-8 mt-10 lg:mt-0">
           <FooterList title="Offerings" items={footerData.offerings} />
           <FooterList title="Impact Studies" items={footerData.impactStudies} />
           <FooterList title="Capabilities" items={footerData.capabilities} />
