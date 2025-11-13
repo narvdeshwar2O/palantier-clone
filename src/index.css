@@ -23,10 +23,43 @@ platform-info {
 }
 
 /* apply AllianceNo1 globally */
-body {
+/* body {
   font-family: "AllianceNo1", "Helvetica Neue", Arial, sans-serif;
   background-color: #efefef;
   color: #000;
+} */
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
+.scroll-container {
+  animation: infinite-scroll 20s linear infinite;
+}
 
+.scroll-container:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.scroll-container {
+  animation: scroll 120s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.scroll-container:hover {
+  animation-play-state: paused;
+}

@@ -1,9 +1,10 @@
 import React from "react";
 import Carousel from "./components/Carousel";
 import Navbar from "../../Layout/Navbar";
-import Platform from "./components/Platform";
 import PlatformInfo from "./components/PlatformInfo";
 import TableAnimate from "./components/TabelAnimate";
+import WhatWeDo from "./components/WhatWeDo";
+import WhatOtheSay from "./components/WhatOtheSay";
 
 function Home() {
   return (
@@ -11,8 +12,10 @@ function Home() {
       <Navbar />
       <Carousel />
       <PlatformInfo />
+      <p className="bg-white p-5 font-300 text-3xl">Our products</p>
       <TableAnimate />
-      <Platform />
+      <WhatWeDo />
+      <WhatOtheSay />
     </>
   );
 }
