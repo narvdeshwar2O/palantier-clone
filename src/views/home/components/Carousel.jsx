@@ -15,39 +15,32 @@ function Carousel() {
 
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Auto-rotate carousel every 5s
   useEffect(() => {
-    const timer = setTimeout(() => {
-      handleNext();
-    }, 5000);
+    const timer = setTimeout(() => handleNext(), 5000);
     return () => clearTimeout(timer);
   }, [activeIndex]);
 
-  const handleNext = () => {
+  const handleNext = () =>
     setActiveIndex((prev) =>
       prev === carouselData.length - 1 ? 0 : prev + 1
     );
-  };
 
-  const handlePrev = () => {
+  const handlePrev = () =>
     setActiveIndex((prev) =>
       prev === 0 ? carouselData.length - 1 : prev - 1
     );
-  };
 
-  const handleButtonClick = (index) => {
-    setActiveIndex(index);
-  };
+  const handleButtonClick = (index) => setActiveIndex(index);
 
   return (
     <section
       ref={ref}
-      className="relative h-[130vh] bg-[#EFEFEF] overflow-hidden flex flex-col items-center justify-start pt-12 shadow border-b-10 border-b-[#EFEFEF]"
+      className="relative min-h-fit md:min-h-[130vh] bg-[#EFEFEF] overflow-hidden flex flex-col items-center justify-start pt-12 shadow border-b-10 border-b-[#EFEFEF]"
     >
-      {/* === BUTTONS SECTION === */}
+  
       <motion.div
         style={{ y, opacity }}
-        className="z-10 flex flex-wrap gap-4 justify-center w-[98%] mx-auto mb-5 mt-10"
+        className="hidden md:flex z-70 flex-wrap gap-4 justify-center w-[98%] mx-auto mb-5 mt-10"
       >
         {carouselData.map((item, index) => {
           const isActive = index === activeIndex;
@@ -74,10 +67,10 @@ function Carousel() {
         })}
       </motion.div>
 
-      {/* === IMAGE SECTION === */}
-      <div className="absolute inset-0 z-0 mt-40 w-[98%] mx-auto h-[90vh] rounded-md overflow-hidden mb-20">
+      <div className="hidden md:block absolute inset-0 z-50 mt-40 w-[98%] mx-auto h-[90vh] rounded-md overflow-hidden mb-20">
         {carouselData.map((item, index) => {
           const isActive = index === activeIndex;
+
           return (
             <motion.div
               key={item.id}
@@ -89,15 +82,12 @@ function Carousel() {
               transition={{ duration: 1.2, ease: "easeInOut" }}
               className="absolute inset-0"
             >
-              {/* Background Image */}
               <img
                 src={item.src}
                 alt={item.title}
                 className="w-full h-full object-cover object-center rounded-md"
-                loading={isActive ? "eager" : "lazy"}
               />
 
-              {/* Overlay Text */}
               {isActive && (
                 <motion.div
                   initial={{ opacity: 0, y: 30 }}
@@ -111,8 +101,6 @@ function Carousel() {
 
                   <a
                     href={item.link || "#"}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="inline-flex items-center text-white text-[22px] font-medium hover:text-gray-300 transition-all"
                   >
                     {item.description}
@@ -124,26 +112,66 @@ function Carousel() {
           );
         })}
 
-        {/* === LEFT & RIGHT CONTROLS === */}
-        <div className="absolute inset-0 flex justify-between items-center px-6 z-10">
-          {/* Left Button */}
+        {/* DESKTOP CONTROLS */}
+        <div className="absolute inset-0 flex justify-between items-center px-6 z-60">
           <button
             onClick={handlePrev}
-            className="bg-black/40 hover:bg-black/70 text-white p-3 rounded-full transition-all backdrop-blur-md"
+            className="bg-black/40 hover:bg-black/70 text-white p-3 rounded-full backdrop-blur-md"
           >
             <ArrowLeft className="w-6 h-6" />
           </button>
 
-          {/* Right Button */}
           <button
             onClick={handleNext}
-            className=" bg-black/40 hover:bg-black/70 hover:scale-110 text-white p-3 rounded-full transition-all cursor-pointer backdrop-blur-md"
+            className="bg-black/40 hover:bg-black/70 hover:scale-110 text-white p-3 rounded-full backdrop-blur-md"
           >
             <ArrowRight className="w-6 h-6" />
           </button>
         </div>
+      </div>
 
-        <div className="absolute inset-0 bg-[#EFEFEF]/10 rounded-md" />
+      {/* DESKTOP OVERLAY */}
+      <div className="hidden md:block absolute inset-0 z-40 bg-[#EFEFEF]/10 rounded-md" />
+
+      <div className="md:hidden w-full px-3 mt-12 flex flex-col items-center z-10">
+
+        {/* Title */}
+        <h2 className="text-xl font-semibold text-gray-800 mb-3 text-center">
+          {carouselData[activeIndex].title}
+        </h2>
+
+        {/* Mobile image + tap zones */}
+        <div className="relative w-full h-[350px] rounded-md overflow-hidden shadow-md">
+          <img
+            src={carouselData[activeIndex].src}
+            alt={carouselData[activeIndex].title}
+            className="w-full h-full object-cover object-center"
+          />
+
+          {/* LEFT TAP ZONE */}
+          <div
+            onClick={handlePrev}
+            className="absolute left-0 top-0 h-full w-1/2 z-20 md:hidden"
+          />
+
+          {/* RIGHT TAP ZONE */}
+          <div
+            onClick={handleNext}
+            className="absolute right-0 top-0 h-full w-1/2 z-20 md:hidden"
+          />
+        </div>
+
+        {/* Description */}
+        <div className="mt-6 bg-black/60 text-white p-4 rounded-lg backdrop-blur-md w-full">
+          <p className="text-[18px] uppercase text-gray-300 mb-1">
+            {carouselData[activeIndex].earmark ||
+              carouselData[activeIndex].title}
+          </p>
+
+          <p className="text-[16px] leading-snug">
+            {carouselData[activeIndex].description}
+          </p>
+        </div>
       </div>
     </section>
   );
