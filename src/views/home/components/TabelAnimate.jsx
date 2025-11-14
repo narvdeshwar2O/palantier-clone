@@ -13,28 +13,39 @@ function TableAnimate() {
             key={step.id}
             onMouseEnter={() => setHoveredStep(index)}
             onMouseLeave={() => setHoveredStep(null)}
-            className={`grid grid-cols-1 md:grid-cols-[0.5fr_1fr_2fr] items-center cursor-pointer py-10 px-4 md:px-8 transition-all duration-300 ${
-              hoveredStep === index ? "bg-gray-100 text-black" : "bg-white"
-            }`}
+            className={`grid 
+              grid-cols-1 
+              md:grid-cols-[0.5fr_1fr_2fr] 
+              items-center cursor-pointer py-10 px-4 md:px-8 
+              transition-all duration-300 
+              ${hoveredStep === index ? "bg-gray-100 text-black" : "bg-white"}`}
           >
-            {/* === LEFT COLUMN === */}
-            <motion.div
-              animate={hoveredStep === index ? { x: 5 } : { x: 0 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="grid grid-rows-[1fr,1fr,2fr] w-full h-full"
-            >
-              <h3 className="text-lg md:text-xl font-400 text-gray-900 tracking-tight">
-                {step.title}
-              </h3>
-              <p className="text-gray-400 font-300 text-[16px] align-text-bottom hover:text-black">
+            <div className="md:hidden w-full flex flex-col gap-2">
+              <p className="text-gray-400 font-300 text-[16px] text-right -mt-5">
                 /{step.id}
               </p>
-            </motion.div>
+              <p className="text-black text-[38px] font-semibold">
+                {step.description}
+              </p>
 
-            {/* === MIDDLE COLUMN === */}
+              <h3 className="text-[20px] font-medium text-gray-400">
+                {step.title}
+              </h3>
+            </div>
 
-            {/* === RIGHT COLUMN (Centered Image with Left-to-Right Slide) === */}
-            <div className="flex justify-center items-center mt-2 md:mt-0 w-full h-full overflow-hidden">
+            <div className="hidden md:grid grid-rows-[1fr,1fr,2fr] w-full h-full">
+              <motion.div
+                animate={hoveredStep === index ? { x: 5 } : { x: 0 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <h3 className="text-lg md:text-xl font-400 text-gray-900 tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="text-gray-400 font-300 text-[16px]">/{step.id}</p>
+              </motion.div>
+            </div>
+
+            <div className="hidden md:flex justify-center items-center mt-2 md:mt-0 w-full h-full overflow-hidden">
               <AnimatePresence>
                 {hoveredStep === index && (
                   <motion.video
@@ -53,10 +64,11 @@ function TableAnimate() {
                 )}
               </AnimatePresence>
             </div>
+
             <motion.div
               animate={hoveredStep === index ? { x: 10 } : { x: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="text-black text-[140px] leading-relaxed mt-4 md:mt-0 md:ml-10 overflow-hidden"
+              className="hidden md:block text-black text-[clamp(40px,5vw,140px)] leading-relaxed mt-4 md:mt-0 md:ml-10 overflow-hidden"
             >
               {step.description}
             </motion.div>
