@@ -3,7 +3,7 @@ import { ArrowBigDown, List, Search } from "lucide-react";
 import VideoContainer from "../components/VideoContainer";
 import Button from "../components/Button";
 
-function Navbar() {
+function Navbar({ onOpenDrawer }) {
   return (
     <div className="relative flex items-center">
       <VideoContainer />
@@ -23,7 +23,7 @@ function Navbar() {
         </div>
         {/* right section */}
         <div className="hidden md:flex gap-1">
-          <Button size="lg">Get started</Button>
+          <Button size="lg" onClick={onOpenDrawer}>Get started</Button>
 
           <div className="flex">
             <Button size="icon">
@@ -45,7 +45,7 @@ function Navbar() {
       </p>
       {/* for mobile view */}
       <div className="bottom-5 z-1000 flex justify-between fixed left-2 right-2 flex-row-reverse md:hidden">
-        <Button size="sm">Get started</Button>
+        <Button size="sm" onClick={onOpenDrawer}>Get started</Button>
 
         <div className="flex">
           <Button size="icon">
