@@ -43,6 +43,19 @@ function Navbar() {
         <br />
         <ArrowBigDown className="mx-auto mt-1" />
       </p>
+      {/* for mobile view */}
+      <div className="bottom-5 z-1000 flex justify-between fixed left-2 right-2 flex-row-reverse md:hidden">
+        <Button size="sm">Get started</Button>
+
+        <div className="flex">
+          <Button size="icon">
+            <Search strokeWidth={0.9} />
+          </Button>
+          <Button size="icon">
+            <List strokeWidth={0.9} />
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }
