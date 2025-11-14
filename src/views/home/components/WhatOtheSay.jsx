@@ -67,7 +67,7 @@ export default function WhatOtherSay() {
         </div>
       </div>
       <span className="border-t w-full h-5 inline-block text-gray-300 mt-10"></span>
-      <div className="grid grid-cols-2 gap-5 h-32">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 h-32">
         {/* LEFT BUTTON */}
         <div className="bg-[#c6c6c6] px-5 py-3 rounded-md cursor-pointer">
           <div
