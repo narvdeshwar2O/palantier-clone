@@ -35,7 +35,7 @@ function Carousel() {
   return (
     <section
       ref={ref}
-      className="relative min-h-fit md:min-h-[130vh] bg-[#EFEFEF] overflow-hidden flex flex-col items-center justify-start pt-12 shadow border-b-10 border-b-[#EFEFEF]"
+      className="relative min-h-fit md:min-h-[130vh] bg-[#EFEFEF]/80 overflow-hidden flex flex-col items-center justify-start pt-12 shadow border-b-10 border-b-[#EFEFEF]"
     >
   
       <motion.div
