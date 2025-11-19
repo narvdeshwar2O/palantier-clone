@@ -14,7 +14,7 @@ function MainContainer() {
           ))}
         </Routes>
       </Suspense>
-      {!path.pathname === "/search" && <Footer />}
+      {path.pathname !== "/search" && <Footer />}
     </>
   );
 }

@@ -1,11 +1,28 @@
 import FormFields from "../FormFields";
 import { popularSearches } from "../../lib/data/popular-seaches";
 import Button from "../Button";
-import { Delete, List, Search, X } from "lucide-react";
+import { List, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import { motion } from "framer-motion";
 function SearchComponent() {
   const navigate = useNavigate();
+  const listVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.1, // animate one by one
+        ease: "easeOut",
+        duration: 0.6,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
   return (
     <div className="bg-[#1E2124] h-screen flex flex-col justify-center">
       {/* top nav section */}
@@ -53,16 +70,22 @@ function SearchComponent() {
               <p className="text-gray-500 px-12 text-[12px] uppercase">
                 Popular Searches
               </p>
-              <ul className="flex text-gray-100 gap-3">
+              <motion.ul
+                className="flex text-gray-100 gap-3"
+                variants={listVariants}
+                initial="hidden"
+                animate="show"
+              >
                 {popularSearches.map((item) => (
-                  <li
-                    id={item.id}
+                  <motion.li
+                    key={item.id}
+                    variants={itemVariants}
                     className="cursor-pointer hover:text-gray-500 underline font-500"
                   >
                     {item.title}
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </div>
           </div>
         </div>
