@@ -1,11 +1,10 @@
 import { ArrowBigDown, List, Search } from "lucide-react";
-
 import VideoContainer from "../components/VideoContainer";
 import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 
 function Navbar({ onOpenDrawer }) {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   return (
     <div className="relative flex items-center">
       <VideoContainer />
@@ -25,13 +24,15 @@ function Navbar({ onOpenDrawer }) {
         </div>
         {/* right section */}
         <div className="hidden md:flex gap-1">
-          <Button size="lg" onClick={onOpenDrawer}>Get started</Button>
+          <Button size="lg" onClick={onOpenDrawer}>
+            Get started
+          </Button>
 
           <div className="flex">
-            <Button size="icon" onClick={()=>navigate("/search")}>
+            <Button size="icon" onClick={() => navigate("/search")}>
               <Search strokeWidth={0.9} />
             </Button>
-            <Button size="icon">
+            <Button size="icon" onClick={() => navigate("/menu")}>
               <List strokeWidth={0.9} />
             </Button>
           </div>
@@ -47,13 +48,15 @@ function Navbar({ onOpenDrawer }) {
       </p>
       {/* for mobile view */}
       <div className="bottom-5 z-1000 flex justify-between fixed left-2 right-2 flex-row-reverse md:hidden">
-        <Button size="sm" onClick={onOpenDrawer}>Get started</Button>
+        <Button size="sm" onClick={onOpenDrawer}>
+          Get started
+        </Button>
 
         <div className="flex">
           <Button size="icon">
-            <Search strokeWidth={0.9} />
+            <Search strokeWidth={0.9} onClick={() => navigate("/search")} />
           </Button>
-          <Button size="icon">
+          <Button size="icon" onClick={() => navigate("/menu")}>
             <List strokeWidth={0.9} />
           </Button>
         </div>

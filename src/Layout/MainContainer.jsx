@@ -2,9 +2,9 @@ import { Suspense } from "react";
 import { Routes, useLocation, Route } from "react-router-dom";
 import { appRoutes } from "../routes/appRoute";
 import Footer from "./Footer";
+
 function MainContainer() {
   const path = useLocation();
-
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
@@ -14,7 +14,7 @@ function MainContainer() {
           ))}
         </Routes>
       </Suspense>
-      {path.pathname !== "/search" && <Footer />}
+      {path.pathname === "/" && <Footer />}
     </>
   );
 }

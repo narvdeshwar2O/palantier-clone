@@ -4,6 +4,7 @@ import Button from "../Button";
 import { List, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+
 function SearchComponent() {
   const navigate = useNavigate();
   const listVariants = {
