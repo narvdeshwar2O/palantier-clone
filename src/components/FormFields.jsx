@@ -1,20 +1,18 @@
-function FormFields({
-  labelName,
-  type = "text",
-  placeholder = "",
-  options = [],
-}) {
+function FormFields({ labelName, type = "text", options = [], className, placeholder }) {
   return (
     <div className="w-full flex flex-col gap-2 p-2">
-      <label htmlFor={labelName} className="text-gray-500 text-sm">
-        {labelName} <span className="text-red-400">*</span>
-      </label>
+      {labelName && (
+        <label htmlFor={labelName} className="text-gray-500 text-sm">
+          {labelName} <span className="text-red-400">*</span>
+        </label>
+      )}
 
       {type === "text" || type === "email" || type === "number" ? (
         <input
           type={type}
           id={labelName}
-          className="border-b border-gray-300 outline-none focus:border-gray-500 p-1 text-sm"
+          className={`${className} border-b border-gray-300 outline-none focus:border-gray-500 p-1 text-sm`}
+          placeholder={placeholder}
         />
       ) : null}
 

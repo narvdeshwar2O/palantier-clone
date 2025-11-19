@@ -2,8 +2,10 @@ import { ArrowBigDown, List, Search } from "lucide-react";
 
 import VideoContainer from "../components/VideoContainer";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 function Navbar({ onOpenDrawer }) {
+  const navigate=useNavigate();
   return (
     <div className="relative flex items-center">
       <VideoContainer />
@@ -26,7 +28,7 @@ function Navbar({ onOpenDrawer }) {
           <Button size="lg" onClick={onOpenDrawer}>Get started</Button>
 
           <div className="flex">
-            <Button size="icon">
+            <Button size="icon" onClick={()=>navigate("/search")}>
               <Search strokeWidth={0.9} />
             </Button>
             <Button size="icon">
