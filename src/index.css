@@ -1,5 +1,5 @@
 @import "tailwindcss";
-/* src/assets/styles/fonts.css */
+
 
 @font-face {
   font-family: "AllianceNo1";
@@ -17,17 +17,15 @@
   font-display: swap;
 }
 
-/* optional: simple global transition for platform-info */
+body {
+  font-family: "Inter", sans-serif;
+}
+
 platform-info {
   transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* apply AllianceNo1 globally */
-/* body {
-  font-family: "AllianceNo1", "Helvetica Neue", Arial, sans-serif;
-  background-color: #efefef;
-  color: #000;
-} */
+
 
 @keyframes infinite-scroll {
   0% {

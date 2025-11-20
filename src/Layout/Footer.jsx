@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import footerData from "../lib/data/footer-data";
 
-const FooterList = ({ title, items }) => (
+export const FooterList = ({ title, items, className = "" }) => (
   <div className="flex flex-col gap-3 text-center md:text-left">
-    <h4 className="font-semibold text-gray-400">{title}</h4>
+    <h4 className={`font-semibold text-gray-400 ${className}`}>{title}</h4>
     <ul className="flex flex-col gap-2.5">
       {items.map((item) => (
         <li
@@ -26,7 +26,7 @@ const FooterList = ({ title, items }) => (
               initial={{ x: 0 }}
               whileHover={{ x: 5 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="hover:text-gray-400 ml-2"
+              className={`hover:text-gray-400 ml-2 ${className}`}
             >
               {item.title}
             </motion.span>
@@ -46,10 +46,8 @@ function Footer() {
           flex flex-col lg:flex-row
         "
       >
-        
         <div className="lg:w-1/4 w-full">
           <div className="flex flex-col gap-6 divide-y divide-gray-300 w-full">
-
             <div className="flex flex-col gap-5 text-center lg:text-left">
               <p className="text-sm text-gray-600 border-b border-gray-300 pb-5">
                 ©2025 Palantir Technologies Inc. <br /> All rights reserved.
@@ -104,11 +102,9 @@ function Footer() {
                 </a>
               ))}
             </div>
-
           </div>
         </div>
 
-        {/* ================= RIGHT COLUMN ================= */}
         <div
           className="
             lg:w-3/4 w-full 

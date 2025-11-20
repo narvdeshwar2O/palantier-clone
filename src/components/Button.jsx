@@ -20,6 +20,7 @@ const Button = ({
 
   // Size variants
   const sizes = {
+    xs:"px-2 py-1 text-[10px]",
     sm: "px-3 py-1 text-sm",
     md: "px-6 py-2 text-base",
     lg: "px-10 py-3 text-lg",

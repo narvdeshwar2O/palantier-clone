@@ -9,19 +9,21 @@ function VideoContainer({ style }) {
   }, []);
 
   const videoSrc = VIDEO_PATHS[activeIndex];
-
   return (
-    <video
-      key={activeIndex}
-      src={videoSrc}
-      autoPlay
-      muted
-      loop={false}
-      playsInline
-      onEnded={handleVideoEnd}
-      className="h-screen w-screen object-cover"
-      style={style}
-    />
+    <>
+      <video
+        key={activeIndex}
+        src={videoSrc}
+        autoPlay
+        muted
+        loop={false}
+        playsInline
+        onEnded={handleVideoEnd}
+        className="h-screen w-screen object-cover"
+        style={style}
+      />
+      <span className="h-screen bg-black/20 absolute inset-0 z-1"></span>
+    </>
   );
 }
 
