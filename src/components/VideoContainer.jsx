@@ -1,14 +1,13 @@
 import { useCallback, useState } from "react";
-import { VIDEO_PATHS } from "../lib/data/video-path";
 
-function VideoContainer({ style }) {
+function VideoContainer({ videoPath }) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const handleVideoEnd = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % VIDEO_PATHS.length);
+    setActiveIndex((prev) => (prev + 1) % videoPath.length);
   }, []);
 
-  const videoSrc = VIDEO_PATHS[activeIndex];
+  const videoSrc = videoPath[activeIndex];
   return (
     <>
       <video
@@ -20,7 +19,6 @@ function VideoContainer({ style }) {
         playsInline
         onEnded={handleVideoEnd}
         className="h-screen w-screen object-cover"
-        style={style}
       />
       <span className="h-screen bg-black/20 absolute inset-0 z-1"></span>
     </>

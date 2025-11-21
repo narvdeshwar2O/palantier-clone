@@ -1,9 +1,12 @@
 import React from "react";
 import PageTransition from "../components/transitions/PageTransition";
+
 // lazy import
 const Home = React.lazy(() => import("../views/home/Home"));
 const Search = React.lazy(() => import("../components/search/SearchComponent"));
 const Menu = React.lazy(() => import("../components/menu/Menu"));
+const Aip = React.lazy(() => import("../views/platforms/aip/Aip"));
+const Gotham = React.lazy(() => import("../views/platforms/gotham/Gotham"));
 
 export const appRoutes = [
   {
@@ -18,7 +21,7 @@ export const appRoutes = [
     path: "/search",
     element: (
       <PageTransition>
-        <Search />{" "}
+        <Search />
       </PageTransition>
     ),
   },
@@ -26,8 +29,23 @@ export const appRoutes = [
     path: "/menu",
     element: (
       <PageTransition>
-        {" "}
         <Menu />
+      </PageTransition>
+    ),
+  },
+  {
+    path: "/platforms/aip",
+    element: (
+      <PageTransition>
+        <Aip />
+      </PageTransition>
+    ),
+  },
+  {
+    path: "/platforms/gotham",
+    element: (
+      <PageTransition>
+        <Gotham />
       </PageTransition>
     ),
   },
