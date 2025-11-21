@@ -33,7 +33,7 @@ function TableAnimate() {
               </h3>
             </div>
 
-            <div className="hidden md:grid grid-rows-[1fr,1fr,2fr] w-full h-full">
+            <div className="hidden md:grid grid-rows-[1fr,1fr,2fr] w-full h-[200px]">
               <motion.div
                 animate={hoveredStep === index ? { x: 5 } : { x: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
@@ -68,7 +68,7 @@ function TableAnimate() {
             <motion.div
               animate={hoveredStep === index ? { x: 10 } : { x: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="hidden md:block text-black text-[clamp(40px,5vw,140px)] leading-relaxed mt-4 md:mt-0 md:ml-10 overflow-hidden"
+              className="hidden md:block text-black text-[clamp(40px,5vw,150px)] leading-relaxed mt-4 md:mt-0 md:ml-10 overflow-hidden"
             >
               {step.description}
             </motion.div>
