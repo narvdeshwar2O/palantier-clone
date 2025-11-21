@@ -24,7 +24,7 @@ function Navbar({ onOpenDrawer }) {
         </div>
         {/* right section */}
         <div className="hidden md:flex gap-1">
-          <Button size="lg" onClick={onOpenDrawer}>
+          <Button size="lg" onClick={onOpenDrawer} >
             Get started
           </Button>
 

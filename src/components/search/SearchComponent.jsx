@@ -2,7 +2,6 @@ import FormFields from "../FormFields";
 import { popularSearches } from "../../lib/data/popular-seaches";
 import Button from "../Button";
 import { List, X } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useCustomNavigate } from "../../hooks/useNavigate";
 
@@ -14,7 +13,7 @@ function SearchComponent() {
       opacity: 1,
       y: 0,
       transition: {
-        staggerChildren: 0.1, // animate one by one
+        staggerChildren: 0.1,
         ease: "easeOut",
         duration: 0.6,
       },
@@ -27,7 +26,6 @@ function SearchComponent() {
   };
   return (
     <div className="bg-[#1E2124] h-screen flex flex-col justify-center">
-      {/* top nav section */}
       <div className="h-[80vh] ">
         <div className="flex justify-between items-center w-[98%] mx-auto">
           <svg
@@ -96,5 +94,4 @@ function SearchComponent() {
     </div>
   );
 }
-
 export default SearchComponent;
