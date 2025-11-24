@@ -1,11 +1,11 @@
-import { V3 } from "@/assets/videos";
-import VideoContainer from "@/components/VideoContainer";
+import HeroAip from "./comp/HeroAip";
+import HeroSubheader from "./comp/HeroSubheader";
+
 function Aip() {
   return (
     <>
-      <div className="relative flex items-center">
-        <VideoContainer videoPath={[V3]}/>
-      </div>
+      <HeroAip />
+      <HeroSubheader />
     </>
   );
 }
