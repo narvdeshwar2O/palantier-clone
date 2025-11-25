@@ -4,13 +4,16 @@ import Button from "../components/Button";
 import { useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import { VIDEO_PATHS } from "../lib/data/video-path";
+import { useState } from "react";
+import GetStarted from "../components/GetStarted";
 
-function Navbar({ onOpenDrawer }) {
+function Navbar() {
   const navigate = useNavigate();
+ 
   return (
     <div className="relative flex items-center">
       <VideoContainer videoPath={VIDEO_PATHS} />
-      <Nav onOpenDrawer={onOpenDrawer} />
+      <Nav />
       <h1 className="absolute inset-0 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/4 text-white text-[clamp(20px,5vw,80px)] text-center font-Alliance2 font-AllianceNo1 w-full">
         AI-Powered Automation <br /> for Every Decision
       </h1>
@@ -21,7 +24,7 @@ function Navbar({ onOpenDrawer }) {
       </p>
       {/* for mobile view */}
       <div className="bottom-5 z-1000 flex justify-between fixed left-2 right-2 flex-row-reverse md:hidden">
-        <Button size="sm" onClick={onOpenDrawer}>
+        <Button size="sm" onClick={() => setIsDrawerOpen(true)}>
           Get started
         </Button>
 
@@ -34,6 +37,7 @@ function Navbar({ onOpenDrawer }) {
           </Button>
         </div>
       </div>
+      
     </div>
   );
 }

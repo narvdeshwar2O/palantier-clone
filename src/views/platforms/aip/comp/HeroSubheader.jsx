@@ -24,7 +24,7 @@ const modernGradientColor = (p) => {
   return `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
 };
 
-function HeroSubheader() {
+function HeroSubheader({ onOpen }) {
   const [progress, setProgress] = useState(0);
   // Glow strength
   const glow = (progress * 35).toFixed(0);
@@ -74,6 +74,7 @@ function HeroSubheader() {
           <button
             className="cursor-pointer text-xl uppercase"
             style={{ color: progress === 0 ? "white" : "black" }}
+            onClick={onOpen}
           >
             Get Started
           </button>
