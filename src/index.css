@@ -61,3 +61,15 @@ platform-info {
 .scroll-container:hover {
   animation-play-state: paused;
 }
+
+.modern-gradient-text {
+  background-image: linear-gradient(
+    122deg,
+    rgb(30, 31, 43) -100%,
+    rgb(152, 129, 243) 20%,
+    rgb(19, 201, 186) 150%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

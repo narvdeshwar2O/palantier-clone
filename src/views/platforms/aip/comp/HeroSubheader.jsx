@@ -1,9 +1,36 @@
 import { useEffect, useState } from "react";
 import { ArrowDownFromLine } from "lucide-react";
 import { motion } from "framer-motion";
+const modernGradientColor = (p) => {
+  p = Math.max(0, Math.min(1, p)); // clamp
+
+  // Modern gradient palette:
+  const colors = [
+    [186, 127, 25], // soft purple
+    [80, 158, 255], // electric blue
+    [100, 210, 200], // aqua teal
+  ];
+
+  const index = Math.floor(p * (colors.length - 1));
+  const next = Math.min(index + 1, colors.length - 1);
+  const t = p * (colors.length - 1) - index;
+
+  const c = [
+    colors[index][0] + (colors[next][0] - colors[index][0]) * t,
+    colors[index][1] + (colors[next][1] - colors[index][1]) * t,
+    colors[index][2] + (colors[next][2] - colors[index][2]) * t,
+  ];
+
+  return `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
+};
 
 function HeroSubheader() {
   const [progress, setProgress] = useState(0);
+  // Glow strength
+  const glow = (progress * 35).toFixed(0);
+
+  // 3D depth amount
+  const depth = progress * 6;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,18 +48,12 @@ function HeroSubheader() {
 
   const text = "Go beyond Chat.";
 
-  // total characters
-  const count = text.length;
-
-  // How many chars should be visible based on progress
-  const visibleChars = Math.floor(progress * count);
-
   const bgColor = progress === 0 ? "#1D1F2B" : "#ffffff";
 
   return (
     <motion.div
       animate={{ backgroundColor: bgColor }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
+      transition={{ duration: 0.9, ease: "easeInOut" }}
       className="h-screen"
     >
       <div className="flex flex-col justify-between h-full w-[90%] mx-auto p-4">
@@ -91,15 +112,14 @@ function HeroSubheader() {
             })}
           </motion.div>
 
-          {/* Second line — fades in after first line completes */}
           <motion.p
-            style={{
+            className="modern-gradient-text font-semibold"
+            animate={{
               opacity: progress >= 0.85 ? 1 : 0,
-              transform:
-                progress >= 0.85 ? "translateY(0px)" : "translateY(15px)",
-              transition: "all 0.4s ease-out",
-              color: progress === 0 ? "white" : "black",
+              y: progress >= 0.85 ? 0 : 15,
+              backgroundPosition: `${progress * 40}% 50%`,
             }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
             Enterprize Autonomy
           </motion.p>
