@@ -11,7 +11,7 @@ function CardDesign({ title, count }) {
   );
 }
 
-function Beyound() {
+function Explore() {
   const refA = useRef(null);
   const refB = useRef(null);
   const refC = useRef(null);
@@ -144,4 +144,4 @@ function Beyound() {
   );
 }
 
-export default Beyound;
+export default Explore;
