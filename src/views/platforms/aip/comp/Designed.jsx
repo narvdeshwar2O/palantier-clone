@@ -1,6 +1,5 @@
 import { useState, useRef, useEffect } from "react";
 import { designedFix } from "../../../../lib/data/designed-data";
-import { IndexCluster } from "./Index";
 
 function Switcher({ video, details }) {
   const [isVideo, setVideo] = useState(true);
@@ -65,9 +64,6 @@ function Designed() {
 
   return (
     <div className="w-[90%] mx-auto space-y-20 py-20">
-      {/* REAL MOVING INDEX EFFECT */}
-    
-
       {designedFix.map((item, i) => (
         <section
           key={i}
