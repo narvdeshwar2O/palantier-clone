@@ -1,5 +1,4 @@
-import { motion, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { V4 } from "../../../../assets/videos";
 
 function CardDesign({ title, count }) {
@@ -11,57 +10,75 @@ function CardDesign({ title, count }) {
   );
 }
 
+const positions = [
+  {
+    A: { divPos: "w-[620px] top-26 right-0 h-64", spanPos: "top-46 left-1/2" },
+  },
+  {
+    B: {
+      divPos: "w-[620px] top-[362px] right-0 h-[360px]",
+      spanPos: "top-1/2 left-1/2",
+    },
+  },
+  {
+    C: {
+      divPos: "w-[140px] top-[362px] right-0 h-14",
+      spanPos: "top-[55%] right-28",
+    },
+  },
+];
+
 function Explore() {
-  const refA = useRef(null);
-  const refB = useRef(null);
-  const refC = useRef(null);
-  const containerRef = useRef(null);
+  const wrapperRef = useRef(null);
+  const [activePosition, setActivePosition] = useState(null);
 
-  const isA = useInView(refA, { once: true, margin: "-100px" });
-  const isB = useInView(refB, { once: true, margin: "-100px" });
-  const isC = useInView(refC, { once: true, margin: "-100px" });
-
-  /* ======================================
-     🧭 START CONTAINER AT TOP
-     ====================================== */
   useEffect(() => {
-    if (containerRef.current) {
-      containerRef.current.scrollTop = 0; // reset scroll inside Beyound
-    }
-  }, []);
+    const handleScroll = () => {
+      const wrapper = wrapperRef.current;
+      if (!wrapper) return;
 
-  /* ==================================================
-     🚫 LOCK CONTAINER SCROLL UNTIL SECTION C IS SEEN
-     ================================================== */
-  useEffect(() => {
-    if (containerRef.current) {
-      if (!isC) {
-        containerRef.current.style.overflowY = "auto"; // allow scroll inside Beyound
-      } else {
-        containerRef.current.style.overflowY = "visible"; // unlock after C visible
+      const rect = wrapper.getBoundingClientRect();
+      const wrapperTop = rect.top;
+      const wrapperHeight = rect.height;
+      const windowHeight = window.innerHeight;
+
+      if (wrapperTop > windowHeight) {
+        setActivePosition(null);
+        return;
       }
-    }
-  }, [isC]);
 
-  /* =============================
-     🎬 ANIMATION VARIANTS
-     ============================= */
-  const boxVariants = {
-    hidden: { opacity: 0, x: 80 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.7 } },
-  };
+      if (wrapperTop + wrapperHeight < 0) {
+        setActivePosition(2);
+        return;
+      }
 
-  const badgeVariants = {
-    hidden: { opacity: 0, scale: 0.3 },
-    show: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
-  };
+      const scrollProgress = Math.max(
+        0,
+        Math.min(1, -wrapperTop / (wrapperHeight - windowHeight))
+      );
+
+      if (scrollProgress < 0.25) {
+        setActivePosition(null);
+      } else if (scrollProgress < 0.55) {
+        setActivePosition(0); // Position A
+      } else if (scrollProgress < 0.85) {
+        setActivePosition(1); // Position B
+      } else {
+        setActivePosition(2); // Position C
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="bg-[#1D1F2B] pb-10">
-      {/* ====================== HEADER ====================== */}
       <div className="flex justify-between w-[95%] mx-auto">
         <div className="mt-28">
-          <p className="text-5xl text-white">Beyound Chat</p>
+          <p className="text-5xl text-white">Beyond Chat</p>
           <p className="text-[#424662] text-3xl">Explore AIP</p>
         </div>
 
@@ -72,73 +89,67 @@ function Explore() {
         </div>
       </div>
 
-      {/* ================ MAIN SNAP-SCROLL CONTAINER ================= */}
       <div
-        ref={containerRef}
-        className="border-[0.5px] border-white/20 w-[90%] mx-auto mt-2 rounded-md h-screen flex overflow-y-auto snap-y snap-mandatory"
+        ref={wrapperRef}
+        className="relative mt-10"
+        style={{ height: "300vh" }}
       >
-        <div className="w-12 h-full border-r border-white/20"></div>
+        <div className="sticky top-0 border-[0.5px] border-white/20 w-[90%] mx-auto rounded-md h-screen flex z-10">
+          <div className="w-12 h-full border-r border-white/20"></div>
 
-        <div className="w-full flex flex-col">
-          <div className="h-12 border-b border-white/20"></div>
+          <div className="w-full flex flex-col">
+            <div className="h-12 border-b border-white/20"></div>
 
-          <div className="flex-1 relative">
-            <video src={V4} className="w-full h-full object-cover" autoPlay muted loop />
+            <div className="flex-1 relative overflow-hidden">
+              <video
+                src={V4}
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+              />
 
-            {/* ========== SECTION A ========== */}
-            <motion.div
-              ref={refA}
-              variants={boxVariants}
-              initial="hidden"
-              animate={isA ? "show" : "hidden"}
-              className="absolute z-20 bg-white/10 w-[620px] top-26 right-0 h-64 snap-start"
-            />
-            <motion.span
-              variants={badgeVariants}
-              initial="hidden"
-              animate={isA ? "show" : "hidden"}
-              className="absolute size-8 bg-white/50 text-black top-46 left-1/2 rounded-full flex items-center justify-center snap-start"
-            >
-              A
-            </motion.span>
+              {positions.map((point, i) => {
+                const key = Object.keys(point)[0];
+                const { divPos, spanPos } = point[key];
+                const isActive = activePosition === i;
 
-            {/* ========== SECTION B ========== */}
-            <motion.div
-              ref={refB}
-              variants={boxVariants}
-              initial="hidden"
-              animate={isB ? "show" : "hidden"}
-              className="absolute z-20 bg-yellow-400/10 w-[620px] top-[362px] right-0 h-[360px] snap-start"
-            />
-            <motion.span
-              variants={badgeVariants}
-              initial="hidden"
-              animate={isB ? "show" : "hidden"}
-              className="absolute size-8 bg-white/50 text-black top-1/2 left-1/2 rounded-full flex items-center justify-center snap-start"
-            >
-              B
-            </motion.span>
+                return (
+                  <div key={key}>
+                    <div
+                      className={`absolute z-20 bg-white/10 transition-all duration-700 ${divPos}`}
+                      style={{
+                        opacity: isActive ? 1 : 0,
+                        transform: isActive ? "scale(1)" : "scale(0.95)",
+                      }}
+                    />
+                    <span
+                      className={`absolute size-8 bg-white/50 text-black ${spanPos} -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-bold transition-all duration-700`}
+                      style={{
+                        opacity: isActive ? 1 : 0,
+                        transform: isActive
+                          ? "translate(-50%, -50%) scale(1)"
+                          : "translate(-50%, -50%) scale(0.5)",
+                      }}
+                    >
+                      {key}
+                    </span>
+                  </div>
+                );
+              })}
 
-            {/* ========== SECTION C ========== */}
-            <motion.div
-              ref={refC}
-              variants={boxVariants}
-              initial="hidden"
-              animate={isC ? "show" : "hidden"}
-              className="absolute z-20 bg-red-400/10 w-[140px] top-[362px] right-0 h-14 snap-start"
-            />
-            <motion.span
-              variants={badgeVariants}
-              initial="hidden"
-              animate={isC ? "show" : "hidden"}
-              className="absolute size-8 bg-white/50 text-black rounded-full top-1/2 right-0 flex items-center justify-center snap-start"
-            >
-              C
-            </motion.span>
+              {/* Scroll indicator */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm bg-black/30 px-4 py-2 rounded-full">
+                Scroll to explore • Position:{" "}
+                {activePosition === null
+                  ? "None"
+                  : String.fromCharCode(65 + activePosition)}
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="w-12 h-full border-l border-white/20"></div>
+          <div className="w-12 h-full border-l border-white/20"></div>
+        </div>
       </div>
     </div>
   );

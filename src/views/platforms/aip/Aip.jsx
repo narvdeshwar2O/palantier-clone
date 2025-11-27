@@ -2,8 +2,8 @@ import { useState } from "react";
 import HeroAip from "./comp/HeroAip";
 import HeroSubheader from "./comp/HeroSubheader";
 import GetStarted from "../../../components/GetStarted";
-import Beyound from "./comp/Beyound";
 import Explore from "./comp/Explore";
+import Process from "./comp/Process";
 
 function Aip() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -13,6 +13,7 @@ function Aip() {
       <HeroSubheader onOpen={() => setIsDrawerOpen(true)} />
       {isDrawerOpen && <GetStarted onClose={() => setIsDrawerOpen(false)} />}
       <Explore />
+      <Process/>
     </>
   );
 }
