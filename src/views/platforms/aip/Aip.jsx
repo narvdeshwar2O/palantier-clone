@@ -3,7 +3,7 @@ import HeroAip from "./comp/HeroAip";
 import HeroSubheader from "./comp/HeroSubheader";
 import GetStarted from "../../../components/GetStarted";
 import Explore from "./comp/Explore";
-import Process from "./comp/Process";
+import Designed from "./comp/Designed";
 
 function Aip() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -13,7 +13,7 @@ function Aip() {
       <HeroSubheader onOpen={() => setIsDrawerOpen(true)} />
       {isDrawerOpen && <GetStarted onClose={() => setIsDrawerOpen(false)} />}
       <Explore />
-      <Process/>
+      <Designed/>
     </>
   );
 }
