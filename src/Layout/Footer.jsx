@@ -37,9 +37,9 @@ export const FooterList = ({ title, items, className = "" }) => (
   </div>
 );
 
-function Footer() {
+function Footer({ theme = "light" }) {
   return (
-    <div className="bg-gray-50">
+    <div className={`${theme == "light" ? "bg-gray-50" : "bg-[#1E2124]"}`}>
       <div
         className="
           w-[95%] mx-auto py-12 gap-10 text-gray-800 mt-5 md:mt-0
@@ -49,11 +49,19 @@ function Footer() {
         <div className="lg:w-1/4 w-full">
           <div className="flex flex-col gap-6 divide-y divide-gray-300 w-full">
             <div className="flex flex-col gap-5 text-center lg:text-left">
-              <p className="text-sm text-gray-600 border-b border-gray-300 pb-5">
+              <p
+                className={`text-sm ${
+                  theme == "light" ? "text-gray-600" : "text-white"
+                } border-b border-gray-300 pb-5`}
+              >
                 ©2025 Palantir Technologies Inc. <br /> All rights reserved.
               </p>
 
-              <p className="text-sm text-gray-600 cursor-pointer pb-5 hover:text-gray-400">
+              <p
+                className={`text-sm ${
+                  theme == "light" ? "text-gray-600" : "text-white"
+                } cursor-pointer pb-5 hover:text-gray-400`}
+              >
                 Cookies Settings
               </p>
             </div>
@@ -68,10 +76,14 @@ function Footer() {
               {footerData.country.map((item) => (
                 <span
                   key={item.id}
-                  className="
-                    px-2 text-[16px] text-gray-600 hover:text-black
-                    transition-colors duration-200
-                  "
+                  className={`
+                    px-2 text-[16px] ${
+                      theme == "light"
+                        ? "text-gray-600 hover:text-black"
+                        : "text-white hover:text-gray-600"
+                    } 
+                    transition-colors duration-200 cursor-pointer
+                  `}
                 >
                   {item.title}
                 </span>
@@ -91,12 +103,14 @@ function Footer() {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-                    block border border-gray-400 rounded-full py-2 
+                  className={`
+                    block border ${theme = "light"
+                      ? "border-gray-400 hover:bg-gray-300"
+                      : "border-white text-white"} rounded-full py-2 
                     w-[80%] md:w-[70%] text-center 
-                    hover:bg-gray-300 cursor-pointer 
+                     cursor-pointer 
                     transition-all duration-500
-                  "
+                  `}
                 >
                   {item.name}
                 </a>
