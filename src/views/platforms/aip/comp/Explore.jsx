@@ -3,27 +3,34 @@ import { V4 } from "../../../../assets/videos";
 
 function CardDesign({ title, count }) {
   return (
-    <div className="border p-2 rounded-md border-white w-42 h-fit">
-      <p className="text-white">{title}</p>
-      <p className="text-white/50">{count}</p>
+    <div className="border p-3 rounded-md border-white/40 w-28 sm:w-36">
+      <p className="text-white text-xs sm:text-sm">{title}</p>
+      <p className="text-white/50 text-[10px] sm:text-xs">{count}</p>
     </div>
   );
 }
 
+// RESPONSIVE positions
 const positions = [
   {
-    A: { divPos: "w-[620px] top-26 right-0 h-64", spanPos: "top-46 left-1/2" },
+    A: {
+      divPos:
+        "w-[60vw] sm:w-[420px] md:w-[520px] lg:w-[620px] top-[20%] right-2 md:right-6 h-32 md:h-64",
+      spanPos: "top-[32%] left-[55%]",
+    },
   },
   {
     B: {
-      divPos: "w-[620px] top-[362px] right-0 h-[360px]",
-      spanPos: "top-1/2 left-1/2",
+      divPos:
+        "w-[65vw] sm:w-[420px] md:w-[520px] lg:w-[620px] top-[50%] right-2 md:right-6 h-48 md:h-[360px]",
+      spanPos: "top-[58%] left-[55%]",
     },
   },
   {
     C: {
-      divPos: "w-[140px] top-[362px] right-0 h-14",
-      spanPos: "top-[55%] right-28",
+      divPos:
+        "w-[120px] sm:w-[140px] top-[70%] right-6 h-10 sm:h-14",
+      spanPos: "top-[74%] right-[20%]",
     },
   },
 ];
@@ -57,15 +64,10 @@ function Explore() {
         Math.min(1, -wrapperTop / (wrapperHeight - windowHeight))
       );
 
-      if (scrollProgress < 0.25) {
-        setActivePosition(null);
-      } else if (scrollProgress < 0.55) {
-        setActivePosition(0); // Position A
-      } else if (scrollProgress < 0.85) {
-        setActivePosition(1); // Position B
-      } else {
-        setActivePosition(2); // Position C
-      }
+      if (scrollProgress < 0.25) setActivePosition(null);
+      else if (scrollProgress < 0.55) setActivePosition(0);
+      else if (scrollProgress < 0.85) setActivePosition(1);
+      else setActivePosition(2);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -76,29 +78,30 @@ function Explore() {
 
   return (
     <div className="bg-[#1D1F2B] pb-10">
-      <div className="flex justify-between w-[95%] mx-auto">
-        <div className="mt-28">
-          <p className="text-5xl text-white">Beyond Chat</p>
-          <p className="text-[#424662] text-3xl">Explore AIP</p>
+      {/* HEADER */}
+      <div className="flex flex-col md:flex-row justify-between w-[95%] mx-auto gap-6 pt-20">
+        <div>
+          <p className="text-3xl sm:text-5xl text-white">Beyond Chat</p>
+          <p className="text-[#424662] text-lg sm:text-3xl">Explore AIP</p>
         </div>
 
-        <div className="mt-28 flex gap-2">
+        <div className="flex gap-2 flex-wrap justify-start sm:justify-end">
           <CardDesign title="AI App" count={1} />
           <CardDesign title="Action-Driven Logic" count={2} />
           <CardDesign title="Automation" count={3} />
         </div>
       </div>
 
-      <div
-        ref={wrapperRef}
-        className="relative mt-10"
-        style={{ height: "300vh" }}
-      >
-        <div className="sticky top-0 border-[0.5px] border-white/20 w-[90%] mx-auto rounded-md h-screen flex z-10">
-          <div className="w-12 h-full border-r border-white/20"></div>
+      {/* SCROLL ZONE */}
+      <div ref={wrapperRef} className="relative mt-10 min-h-[260vh] sm:min-h-[300vh]">
+        <div className="sticky top-0 border border-white/20 w-[95%] mx-auto rounded-md h-screen flex z-10">
 
+          {/* LEFT BORDER */}
+          <div className="hidden sm:block w-12 h-full border-r border-white/20"></div>
+
+          {/* MIDDLE CONTENT */}
           <div className="w-full flex flex-col">
-            <div className="h-12 border-b border-white/20"></div>
+            <div className="h-10 sm:h-12 border-b border-white/20"></div>
 
             <div className="flex-1 relative overflow-hidden">
               <video
@@ -109,6 +112,7 @@ function Explore() {
                 loop
               />
 
+              {/* FLOATING POSITIONS */}
               {positions.map((point, i) => {
                 const key = Object.keys(point)[0];
                 const { divPos, spanPos } = point[key];
@@ -117,14 +121,15 @@ function Explore() {
                 return (
                   <div key={key}>
                     <div
-                      className={`absolute z-20 bg-white/10 transition-all duration-700 ${divPos}`}
+                      className={`absolute z-20 bg-white/10 rounded-md transition-all duration-700 ${divPos}`}
                       style={{
                         opacity: isActive ? 1 : 0,
-                        transform: isActive ? "scale(1)" : "scale(0.95)",
+                        transform: isActive ? "scale(1)" : "scale(0.9)",
                       }}
                     />
                     <span
-                      className={`absolute size-8 bg-white/50 text-black ${spanPos} -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-bold transition-all duration-700`}
+                      className={`absolute size-6 sm:size-8 bg-white/50 text-black ${spanPos}
+                        -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center font-bold transition-all duration-700`}
                       style={{
                         opacity: isActive ? 1 : 0,
                         transform: isActive
@@ -138,8 +143,8 @@ function Explore() {
                 );
               })}
 
-              {/* Scroll indicator */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-sm bg-black/30 px-4 py-2 rounded-full">
+              {/* POSITION INDICATOR */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-xs sm:text-sm bg-black/30 px-4 py-2 rounded-full">
                 Scroll to explore • Position:{" "}
                 {activePosition === null
                   ? "None"
@@ -148,7 +153,8 @@ function Explore() {
             </div>
           </div>
 
-          <div className="w-12 h-full border-l border-white/20"></div>
+          {/* RIGHT BORDER */}
+          <div className="hidden sm:block w-12 h-full border-l border-white/20"></div>
         </div>
       </div>
     </div>

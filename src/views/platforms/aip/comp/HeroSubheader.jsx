@@ -47,7 +47,6 @@ function HeroSubheader({ onOpen }) {
       className="h-screen"
     >
       <div className="flex flex-col justify-between h-full w-[90%] mx-auto p-4">
-
         {/* TOP SECTION */}
         <div className="flex justify-between w-full pt-10 sm:mt-20">
           {["Software", "AIP", "Get Started"].map((text, i) => (
@@ -63,9 +62,10 @@ function HeroSubheader({ onOpen }) {
         </div>
 
         {/* CENTER TEXT SECTION */}
-        <div className="flex flex-col items-center text-center overflow-hidden 
-            text-[36px] sm:text-[60px] md:text-[80px] lg:text-[100px] font-semibold h-[160px] sm:h-[230px] md:h-[260px]">
-
+        <div
+          className="flex flex-col items-center text-center overflow-hidden 
+            text-[36px] sm:text-[60px] md:text-[80px] lg:text-[100px] font-semibold h-[160px] sm:h-[230px] md:h-[260px]"
+        >
           {/* Line reveal */}
           <motion.div className="flex h-[50px] sm:h-[70px] md:h-[90px]">
             {"Go beyond Chat.".split("").map((char, i) => {
@@ -74,7 +74,10 @@ function HeroSubheader({ onOpen }) {
 
               const charProgress = Math.min(
                 1,
-                Math.max(0, (progress - revealStart) / (revealEnd - revealStart))
+                Math.max(
+                  0,
+                  (progress - revealStart) / (revealEnd - revealStart)
+                )
               );
 
               return (
