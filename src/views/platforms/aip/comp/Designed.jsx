@@ -72,7 +72,7 @@ function Designed() {
   }, []);
 
   return (
-    <div className="w-[90%] mx-auto space-y-20 py-20">
+    <div className="w-[90%] mx-auto space-y-5 md:space-y-20 py-20">
       {designedFix.map((item, i) => (
         <section
           key={i}
@@ -82,14 +82,14 @@ function Designed() {
             grid 
             grid-cols-1 
             md:grid-cols-[0.6fr_1fr] 
-            gap-10 md:gap-14 
+            gap-2 md:gap-14 
             min-h-[90vh] md:min-h-screen 
             items-center
           "
         >
           {/* LEFT TITLE SECTION */}
           <div>
-            <p className="text-3xl sm:text-5xl md:text-6xl font-bold leading-tight text-black">
+            <p className="text-[clamp(20px,5vw,30px)] sm:text-5xl md:text-6xl font-bold leading-tight text-black">
               {item.title}
             </p>
           </div>

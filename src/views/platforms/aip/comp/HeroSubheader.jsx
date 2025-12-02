@@ -46,7 +46,7 @@ function HeroSubheader({ onOpen }) {
       transition={{ duration: 0.9, ease: "easeInOut" }}
       className="h-screen"
     >
-      <div className="flex flex-col justify-between h-full w-[90%] mx-auto p-4">
+      <div className="flex flex-col justify-between h-full w-full md:w-[90%] mx-auto p-4">
         {/* TOP SECTION */}
         <div className="flex justify-between w-full pt-10 sm:mt-20">
           {["Software", "AIP", "Get Started"].map((text, i) => (
@@ -64,7 +64,7 @@ function HeroSubheader({ onOpen }) {
         {/* CENTER TEXT SECTION */}
         <div
           className="flex flex-col items-center text-center overflow-hidden 
-            text-[36px] sm:text-[60px] md:text-[80px] lg:text-[100px] font-semibold h-[160px] sm:h-[230px] md:h-[260px]"
+            text-[36px] sm:text-[60px] md:text-[80px] lg:text-[100px] space-y-4 font-semibold h-40 sm:h-[230px] md:h-[260px]"
         >
           {/* Line reveal */}
           <motion.div className="flex h-[50px] sm:h-[70px] md:h-[90px]">
@@ -97,7 +97,7 @@ function HeroSubheader({ onOpen }) {
 
           {/* Subheading */}
           <motion.p
-            className="modern-gradient-text font-semibold"
+            className="modern-gradient-text font-semibold text-[clamp(20px,5vw,50px)]"
             animate={{
               opacity: progress >= 0.85 ? 1 : 0,
               y: progress >= 0.85 ? 0 : 15,

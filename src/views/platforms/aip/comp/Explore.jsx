@@ -10,7 +10,6 @@ function CardDesign({ title, count }) {
   );
 }
 
-// RESPONSIVE positions
 const positions = [
   {
     A: {
@@ -28,8 +27,7 @@ const positions = [
   },
   {
     C: {
-      divPos:
-        "w-[120px] sm:w-[140px] top-[70%] right-6 h-10 sm:h-14",
+      divPos: "w-[120px] sm:w-[140px] top-[70%] right-6 h-10 sm:h-14",
       spanPos: "top-[74%] right-[20%]",
     },
   },
@@ -72,7 +70,6 @@ function Explore() {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -92,8 +89,27 @@ function Explore() {
         </div>
       </div>
 
-      {/* SCROLL ZONE */}
-      <div ref={wrapperRef} className="relative mt-10 min-h-[260vh] sm:min-h-[300vh]">
+      {/* STATIC VIEW FOR MOBILE */}
+      <div className="block md:hidden mt-10 w-[95%] mx-auto">
+        <div className="border border-white/20 rounded-md h-[50vh]">
+          <video
+            src={V4}
+            className="w-full h-full object-cover rounded-md"
+            autoPlay
+            muted
+            loop
+          />
+        </div>
+        <p className="text-white/60 text-center mt-4">
+          Scroll experience available on larger screens
+        </p>
+      </div>
+
+      {/* SCROLL ZONE (DESKTOP ONLY) */}
+      <div
+        ref={wrapperRef}
+        className="relative mt-10 hidden lg:block min-h-[260vh] md:min-h-[300vh]"
+      >
         <div className="sticky top-0 border border-white/20 w-[95%] mx-auto rounded-md h-screen flex z-10">
 
           {/* LEFT BORDER */}

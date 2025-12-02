@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import whatOtherSayAbout from "../../../lib/data/whatothersay";
+import { Link } from "react-router-dom";
 export default function WhatOtherSay() {
   const triplicatedData = [
     ...whatOtherSayAbout,
@@ -69,14 +70,14 @@ export default function WhatOtherSay() {
       <span className="border-t w-full h-5 inline-block text-gray-300 mt-10"></span>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 h-32">
         {/* LEFT BUTTON */}
-        <div className="bg-[#c6c6c6] px-5 py-3 rounded-md cursor-pointer">
+        <Link to="/get-started" className="bg-[#c6c6c6] px-5 py-3 rounded-md cursor-pointer">
           <div
             className="flex justify-between  transition-all duration-300 ease-out hover:scale-[0.97]"
           >
             <button className="text-3xl">Request a Demo</button>
             <ArrowRight />
           </div>
-        </div>
+        </Link>
 
         {/* RIGHT BUTTON */}
         <div className="bg-[#1e1f2b] text-white px-5 py-3 rounded-md cursor-pointer">

@@ -6,22 +6,26 @@ function Solving() {
   return (
     <div className="bg-[#1D1F2B] pb-20 space-y-14">
       {/* TOP SECTION */}
-      <div className="
+      <div
+        className="
         w-[90%] mx-auto pt-20 
         grid grid-cols-1 md:grid-cols-[0.7fr_1.3fr] 
         gap-10
-      ">
+      "
+      >
         {/* LEFT */}
         <div className="space-y-6 p-3 md:p-5">
           <p className="text-2xl sm:text-3xl md:text-4xl text-white leading-tight">
             Solving complex problems across all industries in days, not years.
           </p>
 
-          <button className="
+          <button
+            className="
             flex items-center gap-2 border border-white px-4 py-2 rounded-md text-white 
             cursor-pointer hover:bg-[#474a5c] text-base sm:text-lg md:text-xl 
             transition-all duration-500
-          ">
+          "
+          >
             Explore AIP Now <ArrowRight />
           </button>
         </div>
@@ -39,12 +43,14 @@ function Solving() {
               <p className="text-base sm:text-lg md:text-xl">{index + 1}</p>
 
               <div className="relative w-full">
-                <p className="
-                  uppercase transition-all duration-500 text-2xl sm:text-3xl md:text-5xl 
+                <p
+                  className="
+                  uppercase transition-all duration-500 text-sm sm:text-xl md:text-2xl 
                   group-hover:text-white relative
-                ">
+                "
+                >
                   {item.title}
-                  
+
                   {/* HOVER IMAGE */}
                   <img
                     src={item.image}
@@ -71,10 +77,12 @@ function Solving() {
       </p>
 
       {/* CARDS SECTION */}
-      <div className="
+      <div
+        className="
         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 
         gap-8 w-[90%] mx-auto
-      ">
+      "
+      >
         {builtAIP.map((item) => (
           <div
             key={item.title}
@@ -94,7 +102,7 @@ function Solving() {
               />
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-16 md:space-y-4">
               <video
                 src={item.videoSrc}
                 autoPlay
@@ -103,7 +111,7 @@ function Solving() {
                 muted
                 className="
                   rounded-md object-cover mx-auto 
-                  aspect-video w-full max-h-40
+                  aspect-video w-full h-46 md:max-h-40
                 "
               ></video>
 

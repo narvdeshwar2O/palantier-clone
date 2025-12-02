@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function Gotham() {
-  return (
-    <div>Gotham</div>
-  )
+  return <></>;
 }
 
-export default Gotham
+export default Gotham;

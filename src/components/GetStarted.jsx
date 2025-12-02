@@ -1,4 +1,4 @@
-import { ArrowBigLeft, ArrowRight } from "lucide-react";
+import {  ArrowRight } from "lucide-react";
 import FormFields from "./FormFields";
 import { formFields } from "../lib/data/form-fields";
 import Button from "./Button";
@@ -56,6 +56,7 @@ export default function GetStarted({ onClose }) {
           </div>
         </div>
       </div>
+     
     </>
   );
 }
