@@ -1,3 +1,4 @@
+import GothamSolution from "./comp/GothamSolution";
 import HeroGotham from "./comp/HeroGotham";
 import HeroSubheader from "./comp/HeroSubheader";
 
@@ -6,6 +7,7 @@ function Gotham() {
     <>
       <HeroGotham />
       <HeroSubheader/>
+      <GothamSolution/>
     </>
   );
 }
