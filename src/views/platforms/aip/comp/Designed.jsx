@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { designedFix } from "../../../../lib/data/designed-data";
 
-function Switcher({ video, details }) {
+function Switcher({ video, details, theme }) {
   const [isVideo, setVideo] = useState(true);
+
+  const isDark = theme === "dark";
 
   return (
     <>
@@ -26,9 +27,9 @@ function Switcher({ video, details }) {
         </button>
       </div>
 
-      {/* VIDEO SECTION */}
+      {/* VIDEO SECTION - Always Light */}
       {isVideo ? (
-        <div className="mt-4 border rounded-xl p-1 shadow-md">
+        <div className="mt-4 border rounded-xl p-1 shadow-md bg-white">
           <video
             src={video}
             autoPlay
@@ -38,11 +39,33 @@ function Switcher({ video, details }) {
           />
         </div>
       ) : (
-        <div className="mt-4 border rounded-xl p-4 sm:p-6 shadow-md space-y-4">
+        <div
+          className={`
+            mt-4 rounded-xl p-4 sm:p-6 shadow-lg space-y-6 transition-all duration-500
+            border 
+            ${
+              isDark
+                ? "bg-[#0E1117] text-white border-white/10" // DARK MODE
+                : "bg-white text-black border-black/10" // LIGHT MODE
+            }
+          `}
+        >
           {details.map((d, i) => (
-            <div key={i}>
-              <p className="text-xl sm:text-2xl font-semibold">{d.title}</p>
-              <p className="text-sm sm:text-lg text-gray-700">{d.desc}</p>
+            <div key={i} className="space-y-2">
+              <p
+                className={`text-xl sm:text-2xl font-semibold ${
+                  isDark ? "text-white" : "text-black"
+                }`}
+              >
+                {d.title}
+              </p>
+              <p
+                className={`text-sm sm:text-lg leading-relaxed ${
+                  isDark ? "text-gray-300" : "text-gray-700"
+                }`}
+              >
+                {d.desc}
+              </p>
             </div>
           ))}
         </div>
@@ -51,7 +74,7 @@ function Switcher({ video, details }) {
   );
 }
 
-function Designed() {
+function Designed({ data, theme = "light" }) {
   const [active, setActive] = useState(0);
   const sectionRefs = useRef([]);
 
@@ -73,7 +96,7 @@ function Designed() {
 
   return (
     <div className="w-[90%] mx-auto space-y-5 md:space-y-20 py-20">
-      {designedFix.map((item, i) => (
+      {data.map((item, i) => (
         <section
           key={i}
           data-index={i}
@@ -99,7 +122,14 @@ function Designed() {
             <p className="text-sm sm:text-lg md:text-xl text-gray-700 mb-4 md:mb-5">
               {item.subtitle}
             </p>
-            <Switcher video={item.videoSrc} details={item.details} />
+            <p className="text-sm sm:text-lg md:text-xl text-gray-700 mb-4 md:mb-5">
+              {item.subtitle1}
+            </p>
+            <Switcher
+              video={item.videoSrc}
+              details={item.details}
+              theme={theme}
+            />
           </div>
         </section>
       ))}
