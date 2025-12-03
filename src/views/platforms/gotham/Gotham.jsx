@@ -1,7 +1,13 @@
-import React from "react";
+import HeroGotham from "./comp/HeroGotham";
+import HeroSubheader from "./comp/HeroSubheader";
 
 function Gotham() {
-  return <></>;
+  return (
+    <>
+      <HeroGotham />
+      <HeroSubheader/>
+    </>
+  );
 }
 
 export default Gotham;
