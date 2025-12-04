@@ -4,6 +4,7 @@ import GothamSolution from "./comp/GothamSolution";
 import GothamQuote from "./comp/GothamQuote";
 import HeroGotham from "./comp/HeroGotham";
 import HeroSubheader from "./comp/HeroSubheader";
+import AboutGotham from "./comp/AboutGotham.jsx";
 
 function Gotham() {
   return (
@@ -13,6 +14,7 @@ function Gotham() {
       <GothamSolution />
       <Designed data={gothamChaining} theme="dark" />
       <GothamQuote />
+      <AboutGotham/>
     </>
   );
 }
