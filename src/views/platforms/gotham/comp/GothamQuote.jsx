@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function GothamQuote() {
     return (
         <div className="flex flex-col md:flex-row w-full p-10 gap-10 bg-white">

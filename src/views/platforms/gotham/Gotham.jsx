@@ -1,4 +1,4 @@
-import { gothamChaining } from "../../../lib/data/gotham-chaining";
+import { gothamChaining } from "@/lib/data/gotham-chaining";
 import Designed from "../aip/comp/Designed";
 import GothamSolution from "./comp/GothamSolution";
 import GothamQuote from "./comp/GothamQuote";
@@ -11,7 +11,6 @@ function Gotham() {
       <HeroGotham />
       <HeroSubheader />
       <GothamSolution />
-
       <Designed data={gothamChaining} theme="dark" />
       <GothamQuote />
     </>
