@@ -153,11 +153,13 @@ const PalantirFoundry = () => {
           <div className="flex mt-20 mb-10">
             <div className="w-1/2"></div>
             <div className="w-1/2 flex justify-around">
-              <div className="border-b flex items-center gap-2">
+              <div className="relative w-fit flex items-center gap-1 group cursor-pointer hover:text-gray-400">
                 Get Started with the Ontology <ArrowRight />
+                <span className="absolute bottom-0 right-0 h-px w-full bg-black group-hover:w-0 transition-all duration-500"></span>
               </div>
-              <div className="border-b flex items-center gap-2">
+              <div className="relative w-fit flex items-center gap-1 group cursor-pointer hover:text-gray-400">
                 Download Palantir Overview <ArrowRight />
+                <span className="absolute bottom-0 right-0 h-px w-full bg-black group-hover:w-0 transition-all duration-500"></span>
               </div>
             </div>
           </div>
