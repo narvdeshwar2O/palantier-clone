@@ -1,3 +1,4 @@
+import GlobalImpact from "./comp/GlobalImpact";
 import PalantirFoundry from "./comp/HeroSection";
 import Ontalogy from "./comp/Ontalogy";
 import OntologyOperations from "./comp/OntologyOperation";
@@ -10,6 +11,7 @@ function Foundary() {
       <Ontalogy />
       <OntologySection />
       <OntologyOperations />
+      <GlobalImpact/>
     </>
   );
 }
