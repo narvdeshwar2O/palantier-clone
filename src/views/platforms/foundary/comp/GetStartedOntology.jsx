@@ -1,4 +1,4 @@
-import formData from "./formData.json";
+import formData from "@/lib/data/formData.json";
 import countryList from "react-select-country-list";
 import { useMemo } from "react";
 import FormFields from "@/components/FormFields";
