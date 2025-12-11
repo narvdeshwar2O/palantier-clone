@@ -1,0 +1,59 @@
+{
+  "title": "Get Started with the Ontology",
+  "fields": [
+    {
+      "labelName": "First Name",
+      "type": "text",
+      "placeholder": "Enter first name",
+      "required": true
+    },
+    {
+      "labelName": "Last Name",
+      "type": "text",
+      "placeholder": "Enter last name",
+      "required": true
+    },
+    {
+      "labelName": "Job Title",
+      "type": "text",
+      "placeholder": "Your job title",
+      "required": true
+    },
+    {
+      "labelName": "Business Email",
+      "type": "email",
+      "placeholder": "name@company.com",
+      "required": true
+    },
+    {
+      "labelName": "Phone Number",
+      "type": "number",
+      "placeholder": "Enter phone number",
+      "required": true
+    },
+    {
+      "labelName": "Company / Institution",
+      "type": "text",
+      "placeholder": "Company name",
+      "required": true
+    },
+    {
+      "labelName": "Country",
+      "type": "select",
+      "optionsType": "countries",
+      "required": true
+    },
+    {
+      "labelName": "Tell us about your project",
+      "type": "textarea",
+      "required": false
+    }
+  ],
+  "checkboxes": [
+    "Opt-in to receive Palantir product updates",
+    "Opt-in: Personalized sales outreach",
+    "Opt-in to receive invites to future events",
+    "Opt-in to receive educational resources"
+  ],
+  "submitText": "Submit"
+}

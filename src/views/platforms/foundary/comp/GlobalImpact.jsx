@@ -64,6 +64,7 @@ const GlobalImpact = () => {
           </div>
         </div>
       </div>
+       <hr className="w-[95%] mx-auto" />
     </>
   );
 };

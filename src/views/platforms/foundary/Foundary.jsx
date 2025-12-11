@@ -1,3 +1,6 @@
+import Footer from "../../../Layout/Footer";
+import AwardsSection from "./comp/AwardSection";
+import GetStartedOntology from "./comp/GetStartedOntology";
 import GlobalImpact from "./comp/GlobalImpact";
 import PalantirFoundry from "./comp/HeroSection";
 import Ontalogy from "./comp/Ontalogy";
@@ -11,7 +14,10 @@ function Foundary() {
       <Ontalogy />
       <OntologySection />
       <OntologyOperations />
-      <GlobalImpact/>
+      <GlobalImpact />
+      <AwardsSection />
+      <GetStartedOntology/>
+      <Footer/>
     </>
   );
 }
