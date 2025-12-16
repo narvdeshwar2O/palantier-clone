@@ -12,6 +12,6 @@ This project is a Vite + React app (template created with Vite). It reproduces t
 - Node.js 18+ (recommended)
 - npm, yarn or pnpm
 - Git
-
+- Node
 ---
 
