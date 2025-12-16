@@ -8,8 +8,13 @@ const Menu = React.lazy(() => import("../components/menu/Menu"));
 const Aip = React.lazy(() => import("../views/platforms/aip/Aip"));
 const Gotham = React.lazy(() => import("../views/platforms/gotham/Gotham"));
 const GetStarted = React.lazy(() => import("../views/get-started/GetStarted"));
-const Foundary = React.lazy(() =>import("../views/platforms/foundary/Foundary"));
-const Ontalogy = React.lazy(() =>import("../views/platforms/ontology/Ontology"));
+const Foundary = React.lazy(() =>
+  import("../views/platforms/foundary/Foundary")
+);
+const Ontalogy = React.lazy(() =>
+  import("../views/platforms/ontology/Ontology")
+);
+const Appollo = React.lazy(() => import("../views/platforms/appollo/Appollo"));
 
 export const appRoutes = [
   {
@@ -65,6 +70,14 @@ export const appRoutes = [
     element: (
       <PageTransition>
         <Ontalogy />
+      </PageTransition>
+    ),
+  },
+  {
+    path: "/platforms/appollo",
+    element: (
+      <PageTransition>
+        <Appollo />
       </PageTransition>
     ),
   },
