@@ -1,62 +1,96 @@
-import {  ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 import FormFields from "./FormFields";
-import { formFields } from "../lib/data/form-fields";
+import { formFields } from "@/lib/data/form-fields";
 import Button from "./Button";
+
+const backdropVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+  exit: { opacity: 0 },
+};
+
+const drawerVariants = {
+  hidden: { x: "100%" },
+  visible: {
+    x: 0,
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+  exit: {
+    x: "100%",
+    transition: {
+      duration: 0.35,
+      ease: [0.4, 0, 0.2, 1],
+    },
+  },
+};
 
 export default function GetStarted({ onClose }) {
   return (
     <>
-      <div
-        className="fixed inset-0 bg-black/50 backdrop-blur-[3px] z-9998"
+      {/* BACKDROP */}
+      <motion.div
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
         onClick={onClose}
+        variants={backdropVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
       />
-      <div
-        className="fixed top-0 right-0 h-screen w-full md:w-1/2 bg-white shadow-2xl z-9999 overflow-y-auto transition-transform duration-500"
+
+      {/* DRAWER */}
+      <motion.div
+        className="fixed top-0 right-0 h-screen w-full md:w-1/2 bg-white shadow-2xl z-1000 overflow-y-auto"
         role="dialog"
+        variants={drawerVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
       >
         <button
-          className="cursor-pointer size-8 hover:bg-gray-800 font-600 hover:text-white transition-all duration-300 mt-5"
+          className="m-5 size-8 hover:bg-black hover:text-white transition"
           onClick={onClose}
         >
           X
         </button>
-        {/* content section */}
-        <div className="">
-          <div className="flex justify-between px-3 text-gray-400">
-            <p className="text-sm mt-2">
+
+        <div className="px-4 pb-10">
+          <div className="flex justify-between text-gray-400">
+            <p className="text-sm">
               CONTACT / DEMO REQUEST + PARTNERSHIP INQUIRY
             </p>
 
-            <div className="group border-t-2 hover:text-gray-600 cursor-pointer transition-all duration-300 flex items-center">
+            <div className="group flex items-center gap-1 cursor-pointer">
               <span>Investor Relations</span>
               <ArrowRight
-                className="transition-transform duration-300 ease-in-out group-hover:-rotate-45"
-                size={18}
+                size={16}
+                className="transition-transform duration-300 group-hover:-rotate-45"
               />
             </div>
           </div>
-          <p className="w-[60%] text-4xl mt-10 px-3 font-600 font-sans">
+
+          <p className="text-4xl mt-8 font-semibold w-full md:w-[60%]">
             Interested in solving your problems with Palantir software?
           </p>
-          <div className="p-3">
-            <form action="">
-              {formFields.map((item) => (
-                <FormFields labelName={item.labelName} type={item.type} />
-              ))}
-              <div className="w-1/2">
-                <Button variant="default" size="md" className="m-3 w-full">
-                  Submit
-                </Button>
-              </div>
-            </form>
-            <p>
-              Please see our <span className="underline">Privacy Policy</span> regarding how we will handle this
-              information.
-            </p>
-          </div>
+
+          <form className="mt-8 space-y-4">
+            {formFields.map((item) => (
+              <FormFields
+                key={item.labelName}
+                labelName={item.labelName}
+                type={item.type}
+              />
+            ))}
+
+            <Button className="w-full md:w-1/2 mt-4">
+              Submit
+            </Button>
+          </form>
         </div>
-      </div>
-     
+      </motion.div>
     </>
   );
 }

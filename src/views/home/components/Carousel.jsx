@@ -40,7 +40,7 @@ function Carousel() {
   
       <motion.div
         style={{ y, opacity }}
-        className="hidden md:flex z-70 flex-wrap gap-4 justify-center w-[98%] mx-auto mb-5 mt-10"
+        className="hidden md:flex z-70 flex-wrap gap-2 justify-center w-[98%] mx-auto mb-10 mt-0 md:mt-4"
       >
         {carouselData.map((item, index) => {
           const isActive = index === activeIndex;
@@ -48,7 +48,7 @@ function Carousel() {
             <button
               key={item.id}
               onClick={() => handleButtonClick(index)}
-              className={`relative overflow-hidden bg-white px-4 py-2 rounded-sm shadow-md text-[18px] font-medium transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-400 ${
+              className={`relative overflow-hidden bg-white px-4 py-2 rounded-sm shadow-md text-[16px] font-medium transition-all duration-300 cursor-pointer border border-gray-200 hover:border-gray-400 ${
                 isActive ? "text-black" : "text-gray-500"
               }`}
             >
