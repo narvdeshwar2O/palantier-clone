@@ -25,7 +25,7 @@ const steps = [
     id: "0.4",
     title:
       "The central system for orchestrating decisions across Human+AI teams",
-    description: "Ontology",
+    description: "ONTOLOGY",
     src: "https://www.palantir.com/assets/xrfr7uokpv1b/4hKQ7uw6vsjxrlntoFav6k/d9ea76812927c7b04539acc5463d3300/homepage_-_Apollo.mov?format=mp4",
     slug: "/platforms/ontology",
   },
@@ -33,7 +33,7 @@ const steps = [
     id: "0.5",
     title:
       "Autonomously deploy, monitor, and manage software across any environment",
-    description: "Appollo",
+    description: "APPOLLO",
     src: "https://www.palantir.com/assets/xrfr7uokpv1b/4hKQ7uw6vsjxrlntoFav6k/d9ea76812927c7b04539acc5463d3300/homepage_-_Apollo.mov?format=mp4",
     slug: "/platforms/appollo",
   },

@@ -43,7 +43,7 @@ export default function GetStarted({ onClose }) {
 
       {/* DRAWER */}
       <motion.div
-        className="fixed top-0 right-0 h-screen w-full md:w-1/2 bg-white shadow-2xl z-1000 overflow-y-auto"
+        className="fixed top-0 right-0 h-screen w-full lg:w-1/2 bg-white shadow-2xl z-1000 overflow-y-auto"
         role="dialog"
         variants={drawerVariants}
         initial="hidden"
@@ -51,7 +51,7 @@ export default function GetStarted({ onClose }) {
         exit="exit"
       >
         <button
-          className="m-5 size-8 hover:bg-black hover:text-white transition"
+          className="m-5 size-8 hover:bg-black hover:text-white transition cursor-pointer"
           onClick={onClose}
         >
           X
@@ -72,7 +72,7 @@ export default function GetStarted({ onClose }) {
             </div>
           </div>
 
-          <p className="text-4xl mt-8 font-semibold w-full md:w-[60%]">
+          <p className="text-4xl mt-8 font-semibold w-full ">
             Interested in solving your problems with Palantir software?
           </p>
 

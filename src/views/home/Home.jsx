@@ -13,7 +13,7 @@ function Home() {
       <Navbar/>
       <Carousel />
       <PlatformInfo />
-      <p className="bg-white p-5 font-300 text-3xl">Our products</p>
+      <p className="bg-white p-6 font-300 text-3xl">Our products</p>
       <TableAnimate />
       <WhatWeDo />
       <WhatOtheSay />

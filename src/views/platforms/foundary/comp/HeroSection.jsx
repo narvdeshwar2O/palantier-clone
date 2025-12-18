@@ -23,7 +23,7 @@ const PalantirFoundry = () => {
       </div>
 
       {/* DESKTOP NAVBAR - Only visible from 1024px (lg) and up */}
-      <nav className="hidden lg:flex max-w-7xl mx-auto justify-around mt-10 px-4">
+      <nav className="hidden lg:flex max-w-7xl mx-auto justify-around mt-24 px-4">
         {foundaryMenus.map((item, index) => (
           <div
             key={index}

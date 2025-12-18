@@ -16,7 +16,6 @@ function Navbar() {
     <div className="relative flex items-center">
       <VideoContainer videoPath={VIDEO_PATHS} />
 
-      {/* ✅ PASS HANDLER */}
       <Nav onOpenDrawer={() => setIsDrawerOpen(true)} />
 
       {/* HERO TEXT */}

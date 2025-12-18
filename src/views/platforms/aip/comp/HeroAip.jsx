@@ -20,7 +20,7 @@ function HeroAip() {
         <div
           className="
             text-white font-bold
-            text-[80px] sm:text-[120px] md:text-[160px] lg:text-[200px]
+            text-[clamp(20px,5vw,260px)]
             leading-none
           "
         >

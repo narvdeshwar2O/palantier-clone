@@ -72,7 +72,7 @@ export default function WhatOtherSay() {
         {/* LEFT BUTTON */}
         <Link to="/get-started" className="bg-[#c6c6c6] px-5 py-3 rounded-md cursor-pointer">
           <div
-            className="flex justify-between  transition-all duration-300 ease-out hover:scale-[0.97]"
+            className="flex justify-between  transition-all duration-300 ease-out hover:scale-[0.97] items-center"
           >
             <button className="text-3xl">Request a Demo</button>
             <ArrowRight />
@@ -83,7 +83,7 @@ export default function WhatOtherSay() {
         <div className="bg-[#1e1f2b] text-white px-5 py-3 rounded-md cursor-pointer">
           <div
             className="flex justify-between  transition-all duration-300 ease-out
-      hover:scale-[0.97]"
+      hover:scale-[0.97] items-center"
           >
             <button className="text-3xl">Start Building</button>
             <ArrowRight className="align-baseline"/>
