@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const ENVIRONMENTS = [
   {
@@ -41,58 +41,68 @@ const ENVIRONMENTS = [
 
 export default function ProductionEnvironments() {
   const trackRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const xPos = useRef(0);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    let x = 0;
-    const speed = 0.3;
+    const speed = 0.6;
+    let animationId;
 
     const animate = () => {
-      x -= speed;
-      if (Math.abs(x) >= track.scrollWidth / 2) x = 0;
-      track.style.transform = `translateX(${x}px)`;
-      requestAnimationFrame(animate);
+      if (!isPaused) {
+        xPos.current -= speed;
+        // Reset when half the track (one full set of images) has passed
+        if (Math.abs(xPos.current) >= track.scrollWidth / 2) {
+          xPos.current = 0;
+        }
+        track.style.transform = `translate3d(${xPos.current}px, 0, 0)`;
+      }
+      animationId = requestAnimationFrame(animate);
     };
 
-    requestAnimationFrame(animate);
-  }, []);
+    animationId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationId);
+  }, [isPaused]);
 
   return (
     <>
-      <section className="w-full bg-white px-6 lg:px-20 py-32 overflow-hidden">
-        {/* Heading */}
-        <h2 className="text-5xl lg:text-7xl font-light max-w-4xl mb-20">
+      <section className="w-full bg-white px-6 lg:px-20 py-16 md:py-32 overflow-hidden">
+        <h2 className="text-3xl md:text-5xl lg:text-7xl font-light max-w-4xl mb-12 md:mb-20 leading-tight">
           From one to many environments
         </h2>
 
-        {/* Infinite Carousel */}
-        <div className="relative overflow-hidden">
-          <div ref={trackRef} className="flex gap-6 w-max">
+        <div 
+          className="relative overflow-hidden group"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <div 
+            ref={trackRef} 
+            className="flex gap-4 md:gap-6 w-max will-change-transform"
+          >
             {[...ENVIRONMENTS, ...ENVIRONMENTS].map((env, i) => (
               <EnvironmentCard key={i} {...env} />
             ))}
           </div>
         </div>
       </section>
-      <hr className="w-[95%] mx-auto" />
+      <hr className="w-[90%] md:w-[95%] mx-auto border-gray-200" />
     </>
   );
 }
 
 function EnvironmentCard({ title, bg }) {
   return (
-    <article className="relative min-w-60 h-[300px] bg-black rounded-2xl overflow-hidden flex items-end">
-      {/* Background image (SVG arcs / patterns) */}
+    <article className="relative min-w-[220px] md:min-w-[300px] h-[260px] md:h-80 bg-black rounded-xl md:rounded-2xl overflow-hidden flex items-end shadow-lg transition-transform duration-300 hover:scale-[1.02]">
       <div
-        className="absolute inset-0 bg-no-repeat bg-cover opacity-80 h-[250px] border-b border-white"
+        className="absolute inset-0 bg-no-repeat bg-cover opacity-90 h-[200px] md:h-[260px] border-b border-white/10"
         style={{ backgroundImage: `url(${bg})` }}
       />
-
-      {/* Title */}
-      <div className="relative p-6">
-        <h3 className="text-white text-sm font-medium tracking-wide">
+      <div className="relative p-5 md:p-8 w-full bg-linear-to-t from-black/90 via-black/40 to-transparent">
+        <h3 className="text-white text-xs md:text-sm font-semibold tracking-widest uppercase">
           {title}
         </h3>
       </div>

@@ -14,11 +14,13 @@ const offerings = [
 const OntologyOperations = () => {
   return (
     <>
-      <section className="bg-white py-16 px-6 md:px-12 lg:px-4">
-        <div className="w-[98%] mx-auto flex flex-col lg:flex-row gap-3 lg:gap-3">
+      <section className="bg-white py-12 md:py-20 lg:py-24 px-6 md:px-12 lg:px-8">
+        {/* Container: Stacks vertically, shifts to row at LG breakpoint */}
+        <div className="max-w-[1400px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20">
+          
           {/* Left Column: Heading */}
-          <div className="w-1/2">
-            <h2 className="text-4xl md:text-6xl font-serif font-normal leading-[1.1] text-gray-900 tracking-tight">
+          <div className="w-full lg:w-1/2">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-serif font-normal leading-[1.1] text-gray-900 tracking-tight">
               Ontology-powered Operations Across Industries
             </h2>
           </div>
@@ -26,7 +28,7 @@ const OntologyOperations = () => {
           {/* Right Column: Content & Links */}
           <div className="w-full lg:w-1/2">
             {/* Description Text */}
-            <div className="space-y-6 text-xl text-gray-500 mb-16 font-sans">
+            <div className="space-y-6 text-lg md:text-xl text-gray-500 mb-10 md:mb-16 font-sans leading-relaxed">
               <p>
                 For more than a decade, we’ve embedded alongside our customers
                 to build Foundry backwards, starting from the most critical
@@ -40,22 +42,23 @@ const OntologyOperations = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-0">
+            {/* Links Grid: 1 col on mobile, 2 cols on tablet/desktop */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12">
               {offerings.map((item, index) => (
                 <a
                   key={index}
                   href={item.href}
-                  className="group flex items-center justify-between border-b border-gray-400 py-4 text-lg text-gray-800 hover:text-gray-600 transition-colors duration-200"
+                  className="group flex items-center justify-between border-b border-gray-300 py-4 md:py-5 text-base md:text-lg text-gray-800 hover:text-blue-600 transition-colors duration-200"
                 >
-                  <span>{item.label}</span>
+                  <span className="font-medium">{item.label}</span>
                   <span className="transform transition-transform duration-200 group-hover:translate-x-1">
                     <svg
-                      width="20"
-                      height="20"
+                      width="18"
+                      height="18"
                       viewBox="0 0 24 24"
                       fill="none"
                       stroke="currentColor"
-                      strokeWidth="1.5"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
@@ -69,7 +72,7 @@ const OntologyOperations = () => {
           </div>
         </div>
       </section>
-      <hr className="w-[95%] mx-auto" />
+      <hr className="w-[92%] md:w-[95%] mx-auto border-gray-200" />
     </>
   );
 };
