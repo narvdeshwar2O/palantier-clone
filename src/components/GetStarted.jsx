@@ -63,7 +63,7 @@ export default function GetStarted({ onClose }) {
               CONTACT / DEMO REQUEST + PARTNERSHIP INQUIRY
             </p>
 
-            <div className="group flex items-center gap-1 cursor-pointer">
+            <div className="group flex items-center gap-1 cursor-pointer text-sm">
               <span>Investor Relations</span>
               <ArrowRight
                 size={16}
