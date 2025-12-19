@@ -85,7 +85,7 @@ function Carousel() {
               <img
                 src={item.src}
                 alt={item.title}
-                className="w-full h-full object-cover object-center rounded-md"
+                className="w-full h-full object-fill object-center rounded-md"
               />
 
               {isActive && (
@@ -141,11 +141,11 @@ function Carousel() {
         </h2>
 
         {/* Mobile image + tap zones */}
-        <div className="relative w-full h-[350px] rounded-md overflow-hidden shadow-md">
+        <div className="relative w-full  rounded-md overflow-hidden shadow-md">
           <img
             src={carouselData[activeIndex].src}
             alt={carouselData[activeIndex].title}
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-fill object-center"
           />
 
           {/* LEFT TAP ZONE */}

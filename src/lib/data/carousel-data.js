@@ -51,12 +51,6 @@ export const carouselData = [
       "Activate AI. With any storage. Any compute. Any model. Anywhere.",
   },
   {
-    id: 7,
-    title: "Maven Smart System",
-    src: MAVEN,
-    description: "AI is transforming the modern battlefield.",
-  },
-  {
     id: 8,
     title: "TITAN",
     src: TITAN,
